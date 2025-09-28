@@ -1,0 +1,3 @@
+    for(char this_char = getc(file); this_char != EOF; this_char = getc(file))
+        if(this_char == '\n')
+            i++;
