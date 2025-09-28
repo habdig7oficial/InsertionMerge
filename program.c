@@ -2,40 +2,57 @@
 #include "stdlib.h"
 #include "string.h"
 
-int main (){
-    FILE *file = fopen("in.csv", "r");
+#include "insertion.h"
 
-    if(file == NULL){
+char **read_file(char fname[], int *length){
+    FILE *file_in = fopen(fname, "r");
+    if(file_in == NULL){
         fprintf(stderr, "File can not be open");
-        return 1;
+        exit(1);
     }
     
 
     int i = 1;
-    for(char c = getc(file); c != EOF; c = getc(file))
+    for(char c = getc(file_in); c != EOF; c = getc(file_in))
         if(c == '\n')
             i++;
 
-    rewind(file);
+    rewind(file_in);
 
-    char *words[i];
+    char **words = (char **) malloc(i * sizeof(char *));
 
     char *line = NULL;
     size_t line_len;
     
     i = 0;
-    ssize_t read = getline(&line, &line_len,file);
+    ssize_t read = getline(&line, &line_len,file_in);
     while(read != -1){
-        words[i] = (char *) malloc(line_len + 1);
+        int len = strlen(line);
+        if(line[len - 1] == '\n')
+            line[len - 1] = '\0';
+        words[i] = (char *) malloc(line_len - 1);
         strcpy(words[i], line);
-        read = getline(&line, &line_len,file);
+        read = getline(&line, &line_len,file_in);
         i++;
     }
 
-    for(int j = 0; j < i; j++)
-        printf("%s", words[j]);
+    fclose(file_in);
 
-    fclose(file);
+    *length = i;
+
+    return words;
+}
+
+int main (){
+    int length;
+    char **words = read_file("inless.csv", &length);
+
+    insertion_sort(words, length);
+
+
+    for(int j = 0; j < length; j++){
+        printf("%s\n",words[j]);
+    }
 
     return 0;
 }
