@@ -43,6 +43,20 @@ char **read_file(char fname[], int *length){
     return words;
 }
 
+void write_file(char fname[], char **arr, int length){
+    FILE *file = fopen(fname, "w");
+
+    if(file == NULL){
+        fprintf(stderr, "File can not be open");
+        exit(1);
+    }
+
+    for(int i = 0; i < length; i++){
+        fprintf(file, "%s\n", arr[i]);
+    }
+
+}
+
 int main (){
     int length;
     char **words = read_file("inless.csv", &length);
@@ -53,6 +67,11 @@ int main (){
     for(int j = 0; j < length; j++){
         printf("%s\n",words[j]);
     }
+
+    write_file("out.csv", words,length);
+
+
+    free(words);
 
     return 0;
 }

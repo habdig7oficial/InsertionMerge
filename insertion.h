@@ -6,18 +6,24 @@ void str_lower(char *str){
     for ( ; *str; ++str) *str = tolower(*str);
 }
 
-void pull_vector(char **words, int end){
-    printf("--%d--", end);
-    char *aux;
+void print_vec(char **words, int end){
+    printf("[");
     for(int i = 0; i < end; i++){
-        aux = words[i + 1];
-        words[i + 1] = words[i];
-        words[i + 2] = aux;
+        printf("%s, ", words[i]);
     }
+    printf("]");
+}
 
+void push_vector(char **words, int end){
+    printf("i: %d", end);
+    for(int i = end - 1; i > 0; i--){
+       printf("i: %s i-1: %s", words[i], words[i - 1]);
+        words[i] = words[i - 1];
+    }
 }
 
 void insertion_sort(char **words, int length){
+    print_vec(words, length);
     for(int i = 0; i < length; i++){
         for(int j = 0; j < i; j++){
             
@@ -26,9 +32,10 @@ void insertion_sort(char **words, int length){
             printf("%d %s %s %d | ", i, words[i], words[j], strcmp(words[i], words[j]));
 
             int cmp_num = strcmp(words[i], words[j]);
-            
+    
             if(cmp_num <= 0){
-                pull_vector(&words[i], i - j); // tem que empurrar pra frente
+               // push_vector(&words[i], i - j); // tem que empurrar pra frente
+               // print_vec(words, length);
                 break;
             }
         }
