@@ -23,44 +23,16 @@ void push_vector(char **words, int end){
     }
 }
 
-void insertion_sort(char **arr, int len) {
+int insertion_sort(char **arr, int len) {
+  int steps = 0;
   for (int i = 1; i < len; i++) {
     char *key = arr[i];
     int j;
     for (j = i - 1; j >= 0 && strcmp(key, arr[j]) < 0; j--) {
       arr[j + 1] = arr[j];
+      steps++;
     }
     arr[j + 1] = key;
   }
-
-  print_vec(arr, len);
+  return steps;
 }
-
-/*
-void insertion_sort(char **words, int length){
-    print_vec(words, length);
-    for(int i = 0; i < length; i++){
-        for(int j = 0; j < i; j++){
-            
-            str_lower(words[i]);
-            str_lower(words[j]);
-            //printf("%d %s %s %d | ", i, words[i], words[j], strcmp(words[i], words[j]));
-
-            int cmp_num = strcmp(words[i], words[j]);
-    
-            if(cmp_num < 0){
-                char *aux = words[i];
-                push_vector(&words[j], i); // tem que empurrar pra frente
-                print_vec(words, length);
-                printf("-- i: %d j: %d %s %s\n", i, j, words[i], aux);
-                words[j] = aux; 
-                print_vec(words, length);
-               // print_vec(words, length);
-                break;
-            }
-        }
-        printf("\n----\n");
-    }
-}
-*/
-

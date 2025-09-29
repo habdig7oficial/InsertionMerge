@@ -63,7 +63,9 @@ int main (){
     int length;
     char **words = read_file("in.csv", &length);
 
-   insertion_sort(words, length);
+   int insertion_steps = insertion_sort(words, length);
+
+   printf("Insertion took %d", insertion_steps);
 
     write_file("out.csv", words,length);
 
