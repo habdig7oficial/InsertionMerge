@@ -3,24 +3,18 @@
 #include "ctype.h"
 
 char *str_lower(char *str){
+    /* Iter and set all chars of string to lowercase */
     for ( ; *str; ++str) *str = tolower(*str);
     return str;
 }
 
 void print_vec(char **words, int end){
+    /* Iter and Print vector */
     printf("\n[");
     for(int i = 0; i < end; i++){
         printf("%s, ", words[i]);
     }
     printf("]");
-}
-
-void push_vector(char **words, int end){
-    //printf("i: %d", end);
-    for(int i = end - 1; i > 0; i--){
-       //printf("i: %s i-1: %s", words[i], words[i - 1]);
-        words[i] = words[i - 1];
-    }
 }
 
 int insertion_sort(char **arr, int len) {

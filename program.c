@@ -65,7 +65,9 @@ int main (){
 
    int insertion_steps = insertion_sort(words, length);
 
-   printf("Insertion took %d", insertion_steps);
+   print_vec(words, length);
+
+   printf("\nInsertion took %d", insertion_steps);
 
     write_file("out.csv", words,length);
 
