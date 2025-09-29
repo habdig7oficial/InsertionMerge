@@ -33,20 +33,17 @@ void insertion_sort(char **words, int length){
 
             int cmp_num = strcmp(words[i], words[j]);
     
-            if(cmp_num <= 0){
+            if(cmp_num < 0){
                 char *aux = words[i];
                 push_vector(&words[j], i); // tem que empurrar pra frente
                 print_vec(words, length);
-                printf("-- i: %d j: %d %s %s\n", i, j, words[i], words[j]);
+                printf("-- i: %d j: %d %s %s\n", i, j, words[i], aux);
                 words[j] = aux; 
-                return;
+                print_vec(words, length);
                // print_vec(words, length);
                 break;
             }
         }
         printf("\n----\n");
     }
-
-    
-
 }
