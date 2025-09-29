@@ -2,8 +2,9 @@
 #include "string.h"
 #include "ctype.h"
 
-void str_lower(char *str){
+char *str_lower(char *str){
     for ( ; *str; ++str) *str = tolower(*str);
+    return str;
 }
 
 void print_vec(char **words, int end){
@@ -22,6 +23,20 @@ void push_vector(char **words, int end){
     }
 }
 
+void insertion_sort(char **arr, int len) {
+  for (int i = 1; i < len; i++) {
+    char *key = arr[i];
+    int j;
+    for (j = i - 1; j >= 0 && strcmp(key, arr[j]) < 0; j--) {
+      arr[j + 1] = arr[j];
+    }
+    arr[j + 1] = key;
+  }
+
+  print_vec(arr, len);
+}
+
+/*
 void insertion_sort(char **words, int length){
     print_vec(words, length);
     for(int i = 0; i < length; i++){
@@ -47,3 +62,5 @@ void insertion_sort(char **words, int length){
         printf("\n----\n");
     }
 }
+*/
+

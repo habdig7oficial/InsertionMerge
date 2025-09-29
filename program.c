@@ -3,6 +3,7 @@
 #include "string.h"
 
 #include "insertion.h"
+#include "merge.h"
 
 char **read_file(char fname[], int *length){
     FILE *file_in = fopen(fname, "r");
@@ -57,16 +58,12 @@ void write_file(char fname[], char **arr, int length){
 
 }
 
+
 int main (){
     int length;
-    char **words = read_file("inless.csv", &length);
+    char **words = read_file("in.csv", &length);
 
-    insertion_sort(words, length);
-
-
-    for(int j = 0; j < length; j++){
-        printf("%s\n",words[j]);
-    }
+   insertion_sort(words, length);
 
     write_file("out.csv", words,length);
 
