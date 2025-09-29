@@ -61,18 +61,24 @@ void write_file(char fname[], char **arr, int length){
 
 int main (){
     int length;
-    char **words = read_file("in.csv", &length);
+    char **words1 = read_file("in.csv", &length);
 
-   int insertion_steps = insertion_sort(words, length);
+    char **words2 = (char **) malloc(length * sizeof(char *));
+    memcpy(words2, words1, length * sizeof(char *));
 
-   print_vec(words, length);
+   int insertion_steps = insertion_sort(words1, length);
+
+   print_vec(words1, length);
 
    printf("\nInsertion took %d", insertion_steps);
+   write_file("out1.csv", words1,length);
 
-    write_file("out.csv", words,length);
 
 
-    free(words);
+    write_file("out2.csv", words2,length);
+
+    free(words1);
+    free(words2);
 
     return 0;
 }

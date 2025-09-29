@@ -20,8 +20,8 @@ void print_vec(char **words, int end){
 int insertion_sort(char **arr, int len) {
   int steps = 0;
   for (int i = 1; i < len; i++) {
-    char *key = arr[i];
-    int j;
+    char *key = arr[i]; /* Copy key to no be overwrited */
+    int j; /* if value >= key then stop */
     for (j = i - 1; j >= 0 && strcmp(key, arr[j]) < 0; j--) {
       arr[j + 1] = arr[j];
       steps++;
