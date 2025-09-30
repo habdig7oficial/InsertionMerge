@@ -73,8 +73,8 @@ int main (){
    printf("\nInsertion took %d", insertion_steps);
    write_file("out1.csv", words1,length);
 
-
-
+   int merge_steps = merge_sort(words2, 0, length - 1);
+    printf("\nMerge took %d", merge_steps);
     write_file("out2.csv", words2,length);
 
     free(words1);
