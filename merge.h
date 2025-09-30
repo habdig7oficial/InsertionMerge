@@ -44,7 +44,7 @@ int merge(char **words, int left, int mid, int right){
     free(side1);
     free(side2);
 
-    return 1;
+    return k - left;
     //print_vec(side1, s1_size);
 }
 
@@ -59,5 +59,5 @@ int merge_sort(char **words, int left, int right){
 
     int m_size = merge(words, left, mid_value, right);
 
-    return side1 + side2 + m_size;
+    return  side1 + side2 + m_size;
 }
