@@ -36,11 +36,13 @@ int merge(char **words, int left, int mid, int right){
     }
 
     while(j < s2_size){
-        words[k] = side1[j];
+        words[k] = side2[j];
         j++;
         k++;
     }
 
+    free(side1);
+    free(side2);
 
     return 1;
     //print_vec(side1, s1_size);
