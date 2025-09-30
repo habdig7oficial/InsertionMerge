@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "locale.h"
 
 #include "insertion.h"
 #include "merge.h"
@@ -60,6 +61,9 @@ void write_file(char fname[], char **arr, int length){
 
 
 int main (){
+
+   setlocale(LC_ALL, "de_DE.utf-8");
+
     int length;
     char **words1 = read_file("in.csv", &length);
 
@@ -68,7 +72,7 @@ int main (){
 
    int insertion_steps = insertion_sort(words1, length);
 
-  // print_vec(words1, length);
+    print_vec(words1, length);
 
    printf("\nInsertion took %d", insertion_steps);
    write_file("out1.csv", words1,length);
