@@ -23,7 +23,7 @@ int insertion_sort(char **arr, int len) {
     char *key = arr[i]; /* Copy key to no be overwrited */
     int j; /* if value >= key then stop */
     for (j = i - 1; j >= 0 && strcmp(key, arr[j]) < 0; j--) {
-      arr[j + 1] = arr[j];
+      arr[j + 1] = arr[j]; /* move all nexts elements fowards until the element arrive in it's position */
       steps++;
     }
     arr[j + 1] = key;
